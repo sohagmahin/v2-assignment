@@ -7,7 +7,7 @@ import {
   fetchPaginatedAlbums,
 } from "@/lib/api";
 import type { User } from "@/types";
-import { useUsers } from "@/app/hooks/userUser";
+import { useUsers } from "@/hooks/userUser";
 
 interface AlbumWithUserName {
   userId: number;
