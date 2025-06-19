@@ -1,10 +1,6 @@
 "use client";
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import {
-  useAlbums,
-  usePhotosByAlbum,
-  useInfiniteAlbums,
-} from "./hooks/useAlbums";
+import { usePhotosByAlbum, useInfiniteAlbums } from "./hooks/useAlbums";
 import { AlbumCard } from "./components/AlbumCard";
 import { AlbumModal } from "./components/AlbumModal";
 import { Skeleton } from "./components/Skeleton";
@@ -24,6 +20,7 @@ export default function AlbumsPage() {
   const observer = useRef<IntersectionObserver | null>(null);
 
   const handleObserver = useCallback(
+    // eslint-disable-next-line
     (entries: any) => {
       const target = entries[0];
       if (target.isIntersecting && hasMore && !isLoadingMore) {
