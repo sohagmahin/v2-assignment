@@ -149,7 +149,9 @@ export default function BlogList() {
         ))}
 
       {/* Infinity Skeleton */}
-      {isLoadingMore && <p>Load more data ......</p>}
+      {isLoadingMore && selectedUserId == "all" && (
+        <Skeleton className="h-20 w-full mt-5" />
+      )}
       <div ref={loadMoreRef}></div>
 
       <BlogDetailModal
