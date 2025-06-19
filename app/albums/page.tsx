@@ -67,6 +67,9 @@ export default function AlbumsPage() {
           Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-20 w-full" />
           ))}
+
+        {/* Render infinity Skeleton */}
+        {isLoadingMore && <Skeleton className="h-20 w-full" />}
       </div>
       <div ref={loadMoreRef} />
       <AlbumModal
