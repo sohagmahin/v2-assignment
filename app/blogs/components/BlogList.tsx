@@ -79,33 +79,40 @@ export default function BlogList() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-10 px-4">
-      <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-        Blogs
-      </h1>
-
-      {/* Author filter */}
-      <div className="mb-6 flex items-center gap-4">
-        <label htmlFor="author" className="font-medium">
-          Filter by author:
-        </label>
-        <select
-          id="author"
-          className="border rounded px-2 py-1"
-          value={selectedUserId}
-          onChange={(e) =>
-            setSelectedUserId(
-              e.target.value === "all" ? "all" : Number(e.target.value)
-            )
-          }
-        >
-          <option value="all">All</option>
-          {users?.map((user) => (
-            <option key={user.id} value={user.id}>
-              {user.name}
-            </option>
-          ))}
-        </select>
+    <div className="max-w-2xl mx-auto py-5 px-4">
+      {/* heading */}
+      <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            Blogs
+          </h1>
+          <p className="text-sm opacity-60">
+            Discover interesting articles and stories
+          </p>
+        </div>
+        {/* Author filter */}
+        <div className="flex flex-col items-start sm:items-end gap-0.5">
+          <label htmlFor="author" className="font-medium text-sm opacity-60">
+            Filter by author
+          </label>
+          <select
+            id="author"
+            className="border rounded px-2 py-1"
+            value={selectedUserId}
+            onChange={(e) =>
+              setSelectedUserId(
+                e.target.value === "all" ? "all" : Number(e.target.value)
+              )
+            }
+          >
+            <option value="all">All</option>
+            {users?.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Posts */}

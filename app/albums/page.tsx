@@ -43,10 +43,15 @@ export default function AlbumsPage() {
   );
 
   return (
-    <div className="max-w-2xl mx-auto py-10 px-4">
-      <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-        Albums
-      </h1>
+    <div className="max-w-2xl mx-auto py-5 px-4">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+          Albums
+        </h1>
+        <p className="text-sm opacity-60">
+          Browse through beautiful photo collections
+        </p>
+      </div>
       {error && (
         <div className="text-red-500 mb-4">
           Failed to load albums. Please try again.
