@@ -11,7 +11,7 @@ import BlogPostCard from "./BlogPostCard";
 import BlogDetailModal from "./BlogDetailModal";
 import { useInfinitePosts } from "../hooks/usePosts";
 import { Skeleton } from "@/app/albums/components/Skeleton";
-import { useUsers } from "@/app/hooks/userUser";
+import { useUsers } from "@/hooks/userUser";
 
 const POSTS_PER_PAGE = 10;
 
@@ -161,8 +161,6 @@ export default function BlogList() {
         onOpenChange={(open) => {
           if (!open) setSelectedPost(null);
         }}
-        liked={selectedPost ? likedPosts.includes(selectedPost.id) : false}
-        onLike={handleLike}
       />
     </div>
   );
