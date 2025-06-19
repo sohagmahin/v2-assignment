@@ -7,6 +7,7 @@ import {
   fetchPaginatedAlbums,
 } from "@/lib/api";
 import type { User } from "@/types";
+import { useUsers } from "@/app/hooks/userUser";
 
 interface AlbumWithUserName {
   userId: number;
@@ -24,11 +25,7 @@ export function useAlbums() {
   } = useSWR("albums", fetchAlbums);
 
   // Get users information
-  const {
-    data: users,
-    error: usersError,
-    isLoading: usersLoading,
-  } = useSWR("users", fetchUsers);
+  const { users, error: usersError, isLoading: usersLoading } = useUsers();
 
   const isLoading = albumsLoading || usersLoading;
   const error = albumsError || usersError;
