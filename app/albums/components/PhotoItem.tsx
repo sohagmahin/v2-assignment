@@ -9,6 +9,7 @@ interface PhotoItemProps {
 export function PhotoItem({ photo }: PhotoItemProps) {
   return (
     <div className="flex items-center gap-4 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+      {/* https://dummyjson.com/image/400x200/008080/ffffff?text=Hello+Peter */}
       <Image
         src={photo.thumbnailUrl}
         alt={photo.title}

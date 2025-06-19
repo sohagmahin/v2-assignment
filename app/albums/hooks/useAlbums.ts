@@ -1,5 +1,11 @@
 import useSWR from "swr";
-import { fetchAlbums, fetchUsers, fetchPhotosByAlbum } from "@/lib/api";
+import useSWRInfinite from "swr/infinite";
+import {
+  fetchAlbums,
+  fetchUsers,
+  fetchPhotosByAlbum,
+  fetchPaginatedAlbums,
+} from "@/lib/api";
 import type { User } from "@/types";
 
 interface AlbumWithUserName {
@@ -39,6 +45,49 @@ export function useAlbums() {
       : [];
 
   return { albums: albumsWithUser, isLoading, error };
+}
+
+export function useInfiniteAlbums(limit = 20) {
+  const {
+    data: users,
+    error: usersError,
+    isLoading: usersLoading,
+  } = useSWR("users", fetchUsers);
+
+  const { data, error, size, setSize, isValidating } = useSWRInfinite(
+    // unique key
+    (pageIndex) => ["albums", pageIndex],
+
+    // fetcher
+    async ([, pageIndex]) => {
+      const start = pageIndex * limit;
+      return fetchPaginatedAlbums(start, limit);
+    },
+    { revalidateFirstPage: false }
+  );
+
+  const albums = (data?.flat() ?? []).map((album) => ({
+    ...album,
+    userName:
+      users?.find((u: User) => u.id === album.userId)?.name || "Unknown User",
+  }));
+
+  const isLoading = (!data && !error) || usersLoading;
+  const isLoadingMore = isLoading || isValidating;
+  const hasMore = data && data[data.length - 1]?.length === limit;
+
+  function loadMore() {
+    if (hasMore) setSize(size + 1);
+  }
+
+  return {
+    albums,
+    isLoading,
+    isLoadingMore,
+    error: error || usersError,
+    hasMore,
+    loadMore,
+  };
 }
 
 export function usePhotosByAlbum(albumId: number) {

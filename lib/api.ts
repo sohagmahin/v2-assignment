@@ -8,6 +8,15 @@ export async function fetchAlbums(): Promise<Album[]> {
   return res.json();
 }
 
+export async function fetchPaginatedAlbums(
+  start: number,
+  limit: number
+): Promise<Album[]> {
+  const res = await fetch(`${BASE_URL}/albums?_start=${start}&_limit=${limit}`);
+  if (!res.ok) throw new Error("Failed to fetch albums");
+  return res.json();
+}
+
 export async function fetchUsers(): Promise<User[]> {
   const res = await fetch(`${BASE_URL}/users`);
   if (!res.ok) throw new Error("Failed to fetch users");

@@ -1,18 +1,45 @@
 "use client";
-import React, { useState } from "react";
-import { useAlbums, usePhotosByAlbum } from "./hooks/useAlbums";
+import React, { useState, useCallback, useEffect, useRef } from "react";
+import {
+  useAlbums,
+  usePhotosByAlbum,
+  useInfiniteAlbums,
+} from "./hooks/useAlbums";
 import { AlbumCard } from "./components/AlbumCard";
 import { AlbumModal } from "./components/AlbumModal";
 import { Skeleton } from "./components/Skeleton";
 
 export default function AlbumsPage() {
-  const { albums, isLoading, error } = useAlbums();
+  const { albums, isLoading, error, hasMore, isLoadingMore, loadMore } =
+    useInfiniteAlbums(20);
 
   const [selectedAlbum, setSelectedAlbum] = useState<{
     id: number;
     title: string;
     userName: string;
   } | null>(null);
+
+  // Observer for infinite scroll
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const handleObserver = useCallback(
+    (entries: any) => {
+      const target = entries[0];
+      if (target.isIntersecting && hasMore && !isLoadingMore) {
+        loadMore();
+      }
+    },
+    [hasMore, isLoadingMore, loadMore]
+  );
+
+  useEffect(() => {
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new window.IntersectionObserver(handleObserver);
+    if (loadMoreRef.current) observer.current.observe(loadMoreRef.current);
+    return () => observer.current?.disconnect();
+  }, [handleObserver]);
 
   const { data: photos = [], isLoading: isPhotoLoading } = usePhotosByAlbum(
     selectedAlbum?.id ?? 0
@@ -39,10 +66,12 @@ export default function AlbumsPage() {
 
         {/* Render 4 Skeleton */}
         {isLoading &&
+          isLoadingMore &&
           Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-20 w-full" />
           ))}
       </div>
+      <div ref={loadMoreRef} />
       <AlbumModal
         open={!!selectedAlbum}
         onOpenChange={(open) => {
