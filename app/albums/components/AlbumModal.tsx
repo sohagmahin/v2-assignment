@@ -1,6 +1,6 @@
 import { BaseModal } from "@/components/baseModal";
 import { PhotoItem } from "./PhotoItem";
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from "../../../components/Skeleton";
 import type { Photo } from "@/types";
 
 interface AlbumModalProps {

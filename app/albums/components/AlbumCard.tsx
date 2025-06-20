@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from "../../../components/Skeleton";
 
 interface AlbumCardProps {
   album: { id: number; title: string; userName: string };

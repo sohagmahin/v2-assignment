@@ -3,7 +3,7 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { usePhotosByAlbum, useInfiniteAlbums } from "./hooks/useAlbums";
 import { AlbumCard } from "./components/AlbumCard";
 import { AlbumModal } from "./components/AlbumModal";
-import { Skeleton } from "./components/Skeleton";
+import { Skeleton } from "../../components/Skeleton";
 
 export default function AlbumsPage() {
   const { albums, isLoading, error, hasMore, isLoadingMore, loadMore } =
