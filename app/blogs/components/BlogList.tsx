@@ -133,6 +133,10 @@ export default function BlogList() {
         {filteredPosts?.length === 0 && (
           <div className="text-gray-500">No posts found for this author.</div>
         )}
+
+        {filteredPosts?.length === 0 && selectedUserId !== "all" && (
+          <Skeleton className="h-20 w-full mt-5" />
+        )}
       </div>
 
       {/* Post Error */}
