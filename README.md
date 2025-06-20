@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# V2 Assignment Project (Albums and Blogs)
+
+⚠️ **Image Disclaimer**: The application uses placeholder images from jsonplaceholder.typicode.com. These images may not load due to their service unavailability. 📸
+
+A modern web application built with Next.js 15.
+
+## Live Demo
+
+🔗 [View Live Demo](https://v2-assignment-tau.vercel.app)
+
+## Project Overview
+
+This is a Next.js 15+ application that leverages the App Router architecture. The project is built with TypeScript for type safety and includes modern development practices and tools.
+
+## Project Structure
+
+```
+├── app/             # Next.js App Router pages and layouts
+├── components/      # Reusable React components
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions and shared code
+├── public/         # Static assets
+└── types/          # TypeScript type definitions
+```
+
+## Features
+
+- **Album Management**
+  - Grid view of albums with thumbnails
+  - Infinite scroll for albums
+  - Modal-based album details view
+  - Responsive album display
+
+- **Blog System**
+  - Blog posts with rich content
+  - Infinite scroll for blog posts
+  - Show comments for each blog post
+
+- **UI/UX**
+  - Clean and minimal design
+  - Responsive layout
+
+- **Performance**
+  - Optimized loading times
+  - API caching by swr
+
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, TypeScript, swr
+- **Styling**: Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js >= 20
+- npm or yarn
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+# or
+yarn install
+```
+
+### Running the Application
+
+```bash
+# Start development server
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application will be available at `http://localhost:3000`
