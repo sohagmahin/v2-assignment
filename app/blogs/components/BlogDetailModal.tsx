@@ -4,6 +4,7 @@ import { useComments } from "../hooks/useComments";
 import { BaseModal } from "@/components/baseModal";
 import { MessageCircle } from "lucide-react";
 import { getInitials } from "@/lib/utils";
+import { Skeleton } from "@/components/Skeleton";
 
 interface BlogDetailModalProps {
   post: Post | null;
@@ -34,7 +35,13 @@ export default function BlogDetailModal({
           {post.body}
         </div>
 
-        {isLoading && <div>Loading comments...</div>}
+        {isLoading && (
+          <div className="flex flex-col gap-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <Skeleton key={i} className="h-20 w-full" />
+            ))}
+          </div>
+        )}
         {error && <div className="text-red-500">{error}</div>}
 
         {/* Comments Section */}
