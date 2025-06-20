@@ -1,6 +1,7 @@
-# V2 Assignment Project (Albums and Blogs)
-
 ⚠️ **Image Disclaimer**: The application uses placeholder images from jsonplaceholder.typicode.com. These images may not load due to their service unavailability. 📸
+
+
+# V2 Assignment Project (Albums and Blogs)
 
 A modern web application built with Next.js 15.
 
