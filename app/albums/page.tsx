@@ -74,7 +74,12 @@ export default function AlbumsPage() {
           ))}
 
         {/* Render infinity Skeleton */}
-        {isLoadingMore && <Skeleton className="h-20 w-full" />}
+        {isLoadingMore && (
+          <>
+            <Skeleton className="h-20 w-full" />
+            <Skeleton className="h-20 w-full" />
+          </>
+        )}
       </div>
       <div ref={loadMoreRef} />
       <AlbumModal
