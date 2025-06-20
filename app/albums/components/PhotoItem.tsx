@@ -19,7 +19,7 @@ export function PhotoItem({ photo }: PhotoItemProps) {
         loading="lazy"
       />
       <div className="flex flex-col">
-        <span className="font-medium text-sm text-gray-900 dark:text-gray-100 truncate max-w-xs">
+        <span className="font-medium text-sm text-gray-900 dark:text-gray-100 text-ellipsis">
           {photo.title}
         </span>
         <a
