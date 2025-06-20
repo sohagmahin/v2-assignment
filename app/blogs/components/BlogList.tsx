@@ -10,7 +10,7 @@ import type { Post } from "@/types";
 import BlogPostCard from "./BlogPostCard";
 import BlogDetailModal from "./BlogDetailModal";
 import { useInfinitePosts } from "../hooks/usePosts";
-import { Skeleton } from "@/app/albums/components/Skeleton";
+import { Skeleton } from "@/components/Skeleton";
 import { useUsers } from "@/hooks/userUser";
 
 const POSTS_PER_PAGE = 10;
